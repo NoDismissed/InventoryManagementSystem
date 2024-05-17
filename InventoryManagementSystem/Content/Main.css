@@ -1,0 +1,10 @@
+﻿#footer {
+    position: absolute;
+    bottom: 0;
+    width: 80%;
+    height: 5rem;
+}
+
+#body {
+    padding-top: 15px;
+}

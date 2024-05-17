@@ -1,0 +1,97 @@
+﻿@model InventoryManagementSystem.Models.ItemDetails
+
+<h3>Item Details</h3>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <span>Name</span>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Item_Name)
+        </dd>
+        <dt>
+            <span>Description</span>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Item_Description)
+        </dd>
+        <dt>
+            <span>Amount</span>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Item_Amount)
+        </dd>
+        <dt>
+            <span>Input Date</span>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Item_InputDate)
+        </dd>
+    </dl>
+    <hr />
+    <div class="row">
+        <div class="col-xs-6">
+            @if (Model.Sales.Count > 0)
+            {
+                <h4>Removings</h4>
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center">Amount</th>
+                            <th style="text-align: center">Input Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Sales)
+                        {
+                            <tr>
+                                <td style="text-align: center">
+                                    @Html.DisplayFor(modelItem => item.Sale_Amount)
+                                </td>
+                                <td style="text-align: center">
+                                    @Html.DisplayFor(modelItem => item.Sale_Date)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+        <div class="col-xs-6">
+            @if (Model.Purchases.Count > 0)
+            {
+                <h4>Addings</h4>
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center">Amount</th>
+                            <th style="text-align: center">Input Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Purchases)
+                        {
+                            <tr>
+                                <td style="text-align: center">
+                                    @Html.DisplayFor(modelItem => item.Purchase_Amount)
+                                </td>
+                                <td style="text-align: center">
+                                    @Html.DisplayFor(modelItem => item.Purchase_Date)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+</div>
+<br />
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Item_ID }, new { @class = "btn btn-info" })
+    <br />
+    <br />
+    @Html.ActionLink("Back to List", "Index")
+</p>
